@@ -55,7 +55,7 @@ class Main extends PluginBase implements Listener {
         $cbg = $this->getConfig()->get("blocks-give-compact");
         $mtype = $this->getConfig()->get("message-type");
         $nhitemsa = $this->getConfig()->get("no-sufficient-items-alert");
-        $nhitemm = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("no-sufficient-items-message"));
+        $nhitemsm = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("no-sufficient-items-message"));
         $sucesscma = $this->getConfig()->get("sucess-compact-alert"); 
         $sucessm = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("sucess-compact-message"));
 # =========================================================================
@@ -81,7 +81,7 @@ class Main extends PluginBase implements Listener {
                             }
                         }
                     } else {
-                        if($nhitems === true) {
+                        if($nhitemsa === true) {
                             if($mtype === "message") {
                                 $sender->sendMessage($nhitemsm);
                             }
@@ -115,7 +115,7 @@ class Main extends PluginBase implements Listener {
                             }
                         }
                     } else {
-                        if($nhitems === true) {
+                        if($nhitemsa === true) {
                             if($mtype === "message") {
                                 $sender->sendMessage($nhitemsm);
                             }
@@ -149,7 +149,7 @@ class Main extends PluginBase implements Listener {
                             }
                         }
                     } else {
-                        if($nhitems === true) {
+                        if($nhitemsa === true) {
                             if($mtype === "message") {
                                 $sender->sendMessage($nhitemsm);
                             }
@@ -183,7 +183,7 @@ class Main extends PluginBase implements Listener {
                             }
                         }
                     } else {
-                        if($nhitems === true) {
+                        if($nhitemsa === true) {
                             if($mtype === "message") {
                                 $sender->sendMessage($nhitemsm);
                             }
@@ -217,7 +217,7 @@ class Main extends PluginBase implements Listener {
                             }
                         }
                     } else {
-                        if($nhitems === true) {
+                        if($nhitemsa === true) {
                             if($mtype === "message") {
                                 $sender->sendMessage($nhitemsm);
                             }
