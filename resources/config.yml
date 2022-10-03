@@ -1,0 +1,72 @@
+---
+
+# ===================
+#       COMPACT 
+# ===================
+# 1. A simple plugin to turn ores into blocks and save space in the player's inventory!
+# 2. If you see errors, report here: https://github.com/Henry12960/Compact/issues/new
+# 3. Plugin made by Henry Thierry [HenryDM] 
+# 4. Henry's Website: https://github.com/Henry12960
+
+
+# ===================
+#   PLUGIN VERSION 
+# ===================
+# 1. Only for internal use, do not touch!
+
+plugin-version: "1.0.0"
+
+# ===================
+#       GENERAL  
+# ===================
+# 1. 'min-ores-compact' is a minimum ores to compact in a block, if you change, certify to change 'blocks-give-compact'!
+# 2. 'in-game' is a message displayed if someone run command from console!
+# 3. You can use popup or message in 'message-type'!
+# 4. Use & in messages to get minecraft color codes!
+
+min-ores-compact: 9
+blocks-give-compact: 1
+
+in-game: "Use this command in-game!"
+message-type: "popup"
+compact-worlds: ["world", "Shop"]
+
+no-sufficient-items-alert: true
+no-sufficient-items-message: "&cYou don't have sufficient items to compact!"
+
+sucess-compact-alert: true
+sucess-compact-message: "&aYou have successfully compacted!"
+
+# ===================
+#   COMPACT BLOCKS
+# ===================
+# 1. Set to true the ores, which you want to make available for compacting!
+
+coal-compact: true
+iron-compact: true
+gold-compact: true
+diamond-compact: true
+emerald-compact: true
+
+# ===================
+#      ORES ID
+# ===================
+# 1. Don't mess with the items below if you don't know what it is! Watch out!
+
+coal-ore-id: 263
+iron-ore-id: 265
+gold-ore-id: 266
+diamond-ore-id: 264
+emerald-ore-id: 388
+
+# ===================
+#     BLOCKS ID
+# ===================
+# 1. Don't mess with the items below if you don't know what it is! Watch out!
+
+coal-block-id: 173
+iron-block-id: 42
+gold-block-id: 41
+diamond-block-id: 57
+emerald-block-id: 133
+...

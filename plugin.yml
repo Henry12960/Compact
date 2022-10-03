@@ -1,0 +1,20 @@
+name: Compact
+main: HenryDM\Compact\Main
+api: [4.0.0]
+version: 1.0.0
+
+commands: 
+  compact: 
+    description: "compact items and save space in your inventory"
+    permission: compact.use
+
+  autocompact: 
+    description: "compress items directly by breaking blocks!"
+    permission: autocompact.use    
+
+permissions: 
+  compact.use:
+    default: true
+
+  autocompact.use:
+    default: op    
