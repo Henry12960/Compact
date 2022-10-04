@@ -10,12 +10,8 @@ use pocketmine\command\CommandSender;
 
 use pocketmine\item\LegacyStringToItemParser;
 use pocketmine\player\Player;
-use pocketmine\event\block\BlockBreakEvent;
-use Vecnavium\FormsUI\SimpleForm;
 
 class Main extends PluginBase implements Listener {
-
-    public $autocompact = [];
     
     public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this); 
@@ -31,15 +27,6 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage($this->getConfig()->get("in-game"));
                 break;
             }
-
-            case "autocompact":
-                if($sender instanceof Player) {
-                    $this->autocompact($sender);
-                } else {
-                    $sender->sendMessage($this->getConfig()->get("in-game"));
-                break;
-            }
-        }
         return true;
     }
 
@@ -264,43 +251,6 @@ class Main extends PluginBase implements Listener {
                 }
             }
         }             
-
-# ==================
-#    AUTO COMPACT
-# ==================      
-
-        public function openAutoCompactUI($sender) {
-                $form = new SimpleForm(function(Player $player, int $data = null){
-                    if($data === null) {
-                        return true;
-                    }
-            
-                    switch($data) {
-                        case 0:
-                            if() {
-
-                            }
-                        break;
-        
-                        case 1: 
-                            
-                        break;
-
-                        case 2: 
-                            
-                        break;
-                    }
-            
-                    });
-                    $form->setTitle($this->getConfig()->get("auto-compact-form-title"));
-                    $form->setContent($this->getConfig()->get("auto-compact-form-content"));
-                    $form->addButton($this->getConfig()->get("auto-compact-form-button-on"));
-                    $form->addButton($this->getConfig()->get("auto-compact-form-button-off"));
-                    $form->addButton($this->getConfig()->get("auto-compact-form-exit-button"));
-                    $form->sendToPlayer($player);
-                    return $form;
-            }
-        
         private function loadVersion() : void {
             if($this->getConfig()->get("plugin-version") < "1.0.0") {
                 $this->getLogger()->warning("Your configuration is outdate! Please consider update.");
