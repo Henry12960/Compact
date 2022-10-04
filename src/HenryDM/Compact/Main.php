@@ -8,9 +8,10 @@ use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 
-use pocketmine\item\ItemFactory;
+use pocketmine\item\LegacyStringToItemParser;
 use pocketmine\player\Player;
 use pocketmine\event\block\BlockBreakEvent;
+use Vecnavium\FormsUI\SimpleForm;
 
 class Main extends PluginBase implements Listener {
 
@@ -30,34 +31,67 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage($this->getConfig()->get("in-game"));
                 break;
             }
+
+            case "autocompact":
+                if($sender instanceof Player) {
+                    $this->autocompact($sender);
+                } else {
+                    $sender->sendMessage($this->getConfig()->get("in-game"));
+                break;
+            }
         }
         return true;
     }
 
     public function compact($sender) {
 
-# =========================================================================        
+# =========================================================================
+#                COMPARATIONS TO GET ITEM ID IN HAND
+# =========================================================================
+
+        $coalcID = $this->getConfig->get("coal-ore-id");
+        $ironcID = $this->getConfig->get("iron-ore-id");
+        $goldcID = $this->getConfig->get("gold-ore-id");
+        $diamondcID = $this->getConfig->get("diamond-ore-id");
+        $emeraldcID = $this->getConfig->get("emerald-ore-id");
+
+# =========================================================================
+#                         GENERAL VARIABLES
+# ========================================================================= 
+
+        $mcompact = $this->getConfig()->get("min-ores-compact");
+        $bgc = $this->getConfig()->get("blocks-give-compact");
+        $mtype = $this->getConfig()->get("message-type");
         $inv = $sender->getInventory()->getItemInHand()->getId();
         $count = $sender->getInventory()->getItemInHand()->getCount();
-        $mcompact = $this->getConfig()->get("min-ores-compact");
-        $world = $sender->getWorld();
-        $worldName = $world->getFolderName();
-        $coalOID = $this->getConfig()->get("coal-ore-id");
-        $coalBID = $this->getConfig()->get("coal-block-id");
-        $ironOID = $this->getConfig()->get("iron-ore-id");
-        $ironBID = $this->getConfig()->get("iron-block-id");
-        $goldOID = $this->getConfig()->get("gold-ore-id");
-        $goldBID = $this->getConfig()->get("gold-block-id");
-        $diamondOID = $this->getConfig()->get("diamond-ore-id");
-        $diamondBID = $this->getConfig()->get("diamond-block-id");
-        $emeraldOID = $this->getConfig()->get("emerald-ore-id");
-        $emeraldBID = $this->getConfig()->get("emerald-block-id");
-        $cbg = $this->getConfig()->get("blocks-give-compact");
-        $mtype = $this->getConfig()->get("message-type");
+        $sucessca = $this->getConfig()->get("sucess-compact-alert");
+        $sucessm = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("sucess-compact-message"));
         $nhitemsa = $this->getConfig()->get("no-sufficient-items-alert");
         $nhitemsm = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("no-sufficient-items-message"));
-        $sucesscma = $this->getConfig()->get("sucess-compact-alert"); 
-        $sucessm = str_replace(["&", "{line}"], ["§", "\n"], $this->getConfig()->get("sucess-compact-message"));
+
+# =========================================================================
+#                          WORLD VARIABLES
+# =========================================================================         
+
+        $world = $sender->getWorld();
+        $worldName = $world->getFolderName();
+
+# =========================================================================
+#                     REMOVE & AND ITEMS VARIABLES
+# =========================================================================     
+
+        $coalOID = $this->getConfig()->get("coal-ore-id");
+        $ironOID = $this->getConfig()->get("iron-ore-id");
+        $goldOID = $this->getConfig()->get("gold-ore-id");
+        $diamondOID = $this->getConfig()->get("diamond-ore-id");
+        $emeraldOID = $this->getConfig()->get("emerald-ore-id");
+
+        $coalBID = $this->getConfig()->get("coal-block-id");
+        $ironBID = $this->getConfig()->get("iron-block-id");
+        $goldBID = $this->getConfig()->get("gold-block-id");
+        $diamondBID = $this->getConfig()->get("diamond-block-id");
+        $emeraldBID = $this->getConfig()->get("emerald-block-id");
+
 # =========================================================================
 
 # ==================
@@ -65,12 +99,12 @@ class Main extends PluginBase implements Listener {
 # ==================
 
         if($this->getConfig()->get("coal-compact") === true) {
-                if($inv === $coalOID) {
+                if($inv === $coalcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem(ItemFactory::getInstance()->get($coalOID, 0, $mcompact));
-                            $sender->getInventory()->addItem(ItemFactory::getInstance()->get($coalBID, 0, $cbg));
-                            if($sucesscma === true) {
+                            $sender->getInventory()->removeItem($coalOID->setCount($mcompact));
+                            $sender->getInventory()->addItem($coalBID->setCount($bgc));
+                            if($sucessca === true) {
                                 if($mtype === "message") {
                                     $sender->sendMessage($sucessm);
                                 }
@@ -99,12 +133,12 @@ class Main extends PluginBase implements Listener {
 # ==================
 
         if($this->getConfig()->get("iron-compact") === true) {
-                if($inv === $ironOID) {
+                if($inv === $ironcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem(ItemFactory::getInstance()->get($ironOID, 0, $mcompact));
-                            $sender->getInventory()->addItem(ItemFactory::getInstance()->get($ironBID, 0, $cbg));
-                            if($sucesscma === true) {
+                            $sender->getInventory()->removeItem($ironOID->setCount($mcompact));
+                            $sender->getInventory()->addItem($ironBID->setCount($bgc));
+                            if($sucessca === true) {
                                 if($mtype === "message") {
                                     $sender->sendMessage($sucessm);
                                 }
@@ -133,12 +167,12 @@ class Main extends PluginBase implements Listener {
 # ==================
 
         if($this->getConfig()->get("gold-compact") === true) {
-                if($inv === $ironOID) {
+                if($inv === $goldcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem(ItemFactory::getInstance()->get($goldOID, 0, $mcompact));
-                            $sender->getInventory()->addItem(ItemFactory::getInstance()->get($goldBID, 0, $cbg));
-                            if($sucesscma === true) {
+                            $sender->getInventory()->removeItem($goldOID->setCount($mcompact));
+                            $sender->getInventory()->addItem($goldBID->setCount($bgc));
+                            if($sucessca === true) {
                                 if($mtype === "message") {
                                     $sender->sendMessage($sucessm);
                                 }
@@ -167,12 +201,12 @@ class Main extends PluginBase implements Listener {
 # ==================
 
         if($this->getConfig()->get("diamond-compact") === true) {
-                if($inv === $diamondOID) {
+                if($inv === $diamondcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem(ItemFactory::getInstance()->get($diamondOID, 0, $mcompact));
-                            $sender->getInventory()->addItem(ItemFactory::getInstance()->get($diamondBID, 0, $cbg));
-                            if($sucesscma === true) {
+                            $sender->getInventory()->removeItem($diamondOID->setCount($mcompact));
+                            $sender->getInventory()->addItem($diamondBID->setCount($bgc));
+                            if($sucessca === true) {
                                 if($mtype === "message") {
                                     $sender->sendMessage($sucessm);
                                 }
@@ -201,12 +235,12 @@ class Main extends PluginBase implements Listener {
 # ==================
 
         if($this->getConfig()->get("emerald-compact") === true) {
-                if($inv === $emeraldOID) {
+                if($inv === $emeraldcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem(ItemFactory::getInstance()->get($emeraldOID, 0, $mcompact));
-                            $sender->getInventory()->addItem(ItemFactory::getInstance()->get($emeraldBID, 0, $cbg));
-                            if($sucesscma === true) {
+                            $sender->getInventory()->removeItem($emeraldOID->setCount($mcompact));
+                            $sender->getInventory()->addItem($emeraldBID->setCount($bgc));
+                            if($sucessca === true) {
                                 if($mtype === "message") {
                                     $sender->sendMessage($sucessm);
                                 }
@@ -228,11 +262,43 @@ class Main extends PluginBase implements Listener {
                         }
                     }
                 }
-            } 
-        }
-        
-        public function onBreak(BlockBreakEvent $event) {
+            }             
 
+# ==================
+#    AUTO COMPACT
+# ==================      
+
+        public function openAutoCompactUI($sender) {
+                $form = new SimpleForm(function(Player $player, int $data = null){
+                    if($data === null) {
+                        return true;
+                    }
+            
+                    switch($data) {
+                        case 0:
+                            if() {
+                                
+                            }
+                        break;
+        
+                        case 1: 
+                            
+                        break;
+
+                        case 2: 
+                            
+                        break;
+                    }
+            
+                    });
+                    $form->setTitle($this->getConfig()->get("auto-compact-form-title"));
+                    $form->setContent($this->getConfig()->get("auto-compact-form-content"));
+                    $form->addButton($this->getConfig()->get("auto-compact-form-button-on"));
+                    $form->addButton($this->getConfig()->get("auto-compact-form-button-off"));
+                    $form->addButton($this->getConfig()->get("auto-compact-form-exit-button"));
+                    $form->sendToPlayer($player);
+                    return $form;
+            }
         }
         
         private function loadVersion() : void {
