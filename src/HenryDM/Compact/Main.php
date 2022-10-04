@@ -37,11 +37,11 @@ class Main extends PluginBase implements Listener {
 #                COMPARATIONS TO GET ITEM ID IN HAND
 # =========================================================================
 
-        $coalcID = $this->getConfig->get("coal-ore-id");
-        $ironcID = $this->getConfig->get("iron-ore-id");
-        $goldcID = $this->getConfig->get("gold-ore-id");
-        $diamondcID = $this->getConfig->get("diamond-ore-id");
-        $emeraldcID = $this->getConfig->get("emerald-ore-id");
+        $coalcID = $this->getConfig()->get("coal-ore-id");
+        $ironcID = $this->getConfig()->get("iron-ore-id");
+        $goldcID = $this->getConfig()->get("gold-ore-id");
+        $diamondcID = $this->getConfig()->get("diamond-ore-id");
+        $emeraldcID = $this->getConfig()->get("emerald-ore-id");
 
 # =========================================================================
 #                         GENERAL VARIABLES
