@@ -262,7 +262,8 @@ class Main extends PluginBase implements Listener {
                         }
                     }
                 }
-            }             
+            }
+        }             
 
 # ==================
 #    AUTO COMPACT
@@ -277,7 +278,7 @@ class Main extends PluginBase implements Listener {
                     switch($data) {
                         case 0:
                             if() {
-                                
+
                             }
                         break;
         
@@ -299,7 +300,6 @@ class Main extends PluginBase implements Listener {
                     $form->sendToPlayer($player);
                     return $form;
             }
-        }
         
         private function loadVersion() : void {
             if($this->getConfig()->get("plugin-version") < "1.0.0") {
