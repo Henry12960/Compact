@@ -6,6 +6,4 @@ projects:
   Compact:
     path: ""
     icon: "Compact.png"
-    libs:
-      - src: https://poggit.pmmp.io/ci/Vecnavium/FormsUI/FormsUI    
 ...
