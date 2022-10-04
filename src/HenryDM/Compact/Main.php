@@ -27,6 +27,7 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage($this->getConfig()->get("in-game"));
                 break;
             }
+        }
         return true;
     }
 
@@ -250,7 +251,7 @@ class Main extends PluginBase implements Listener {
                     }
                 }
             }
-        }             
+        }     
         private function loadVersion() : void {
             if($this->getConfig()->get("plugin-version") < "1.0.0") {
                 $this->getLogger()->warning("Your configuration is outdate! Please consider update.");
