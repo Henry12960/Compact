@@ -69,27 +69,27 @@ class Main extends PluginBase implements Listener {
 #                     REMOVE & AND ITEMS VARIABLES
 # =========================================================================     
         
-        $coalOID = LegacyStringToItemParser::getInstance()->parse($coalOIDL);
         $coalOIDL = $this->getConfig()->get("coal-ore-id");
-        $ironOID = LegacyStringToItemParser::getInstance()->parse($ironOIDL);
+        $coalOID = LegacyStringToItemParser::getInstance()->parse($coalOIDL);
         $ironOIDL = $this->getConfig()->get("iron-ore-id");
-        $goldOID = LegacyStringToItemParser::getInstance()->parse($goldOIDL);
+        $ironOID = LegacyStringToItemParser::getInstance()->parse($ironOIDL);
         $goldOIDL = $this->getConfig()->get("gold-ore-id");
-        $diamondOID = LegacyStringToItemParser::getInstance()->parse($diamondOIDL);
+        $goldOID = LegacyStringToItemParser::getInstance()->parse($goldOIDL);
         $diamondOIDL = $this->getConfig()->get("diamond-ore-id");
-        $emeraldOID = LegacyStringToItemParser::getInstance()->parse($emeraldOIDL);
+        $diamondOID = LegacyStringToItemParser::getInstance()->parse($diamondOIDL);
         $emeraldOIDL = $this->getConfig()->get("emerald-ore-id");
+        $emeraldOID = LegacyStringToItemParser::getInstance()->parse($emeraldOIDL);
 
-        $coalBID = LegacyStringToItemParser::getInstance()->parse($coalBIDL);
         $coalBIDL = $this->getConfig()->get("coal-block-id");
-        $ironBID = LegacyStringToItemParser::getInstance()->parse($ironBIDL);
+        $coalBID = LegacyStringToItemParser::getInstance()->parse($coalBIDL);
         $ironBIDL = $this->getConfig()->get("iron-block-id");
-        $goldBID = LegacyStringToItemParser::getInstance()->parse($goldBIDL);
+        $ironBID = LegacyStringToItemParser::getInstance()->parse($ironBIDL);
         $goldBIDL = $this->getConfig()->get("gold-block-id");
-        $diamondBID = LegacyStringToItemParser::getInstance()->parse($diamondBIDL);
+        $goldBID = LegacyStringToItemParser::getInstance()->parse($goldBIDL);
         $diamondBIDL = $this->getConfig()->get("diamond-block-id");
-        $emeraldBID = LegacyStringToItemParser::getInstance()->parse($emeraldBIDL);
+        $diamondBID = LegacyStringToItemParser::getInstance()->parse($diamondBIDL);
         $emeraldBIDL = $this->getConfig()->get("emerald-block-id");
+        $emeraldBID = LegacyStringToItemParser::getInstance()->parse($emeraldBIDL);
 
 # =========================================================================
 
