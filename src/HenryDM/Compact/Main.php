@@ -68,18 +68,28 @@ class Main extends PluginBase implements Listener {
 # =========================================================================
 #                     REMOVE & AND ITEMS VARIABLES
 # =========================================================================     
+        
+        $coalOID = LegacyStringToItemParser::getInstance()->parse($coalOIDL);
+        $coalOIDL = $this->getConfig()->get("coal-ore-id");
+        $ironOID = LegacyStringToItemParser::getInstance()->parse($ironOIDL);
+        $ironOIDL = $this->getConfig()->get("iron-ore-id");
+        $goldOID = LegacyStringToItemParser::getInstance()->parse($goldOIDL);
+        $goldOIDL = $this->getConfig()->get("gold-ore-id");
+        $diamondOID = LegacyStringToItemParser::getInstance()->parse($diamondOIDL);
+        $diamondOIDL = $this->getConfig()->get("diamond-ore-id");
+        $emeraldOID = LegacyStringToItemParser::getInstance()->parse($emeraldOIDL);
+        $emeraldOIDL = $this->getConfig()->get("emerald-ore-id");
 
-        $coalOID = $this->getConfig()->get("coal-ore-id");
-        $ironOID = $this->getConfig()->get("iron-ore-id");
-        $goldOID = $this->getConfig()->get("gold-ore-id");
-        $diamondOID = $this->getConfig()->get("diamond-ore-id");
-        $emeraldOID = $this->getConfig()->get("emerald-ore-id");
-
-        $coalBID = $this->getConfig()->get("coal-block-id");
-        $ironBID = $this->getConfig()->get("iron-block-id");
-        $goldBID = $this->getConfig()->get("gold-block-id");
-        $diamondBID = $this->getConfig()->get("diamond-block-id");
-        $emeraldBID = $this->getConfig()->get("emerald-block-id");
+        $coalBID = LegacyStringToItemParser::getInstance()->parse($coalBIDL);
+        $coalBIDL = $this->getConfig()->get("coal-block-id");
+        $ironBID = LegacyStringToItemParser::getInstance()->parse($ironBIDL);
+        $ironBIDL = $this->getConfig()->get("iron-block-id");
+        $goldBID = LegacyStringToItemParser::getInstance()->parse($goldBIDL);
+        $goldBIDL = $this->getConfig()->get("gold-block-id");
+        $diamondBID = LegacyStringToItemParser::getInstance()->parse($diamondBIDL);
+        $diamondBIDL = $this->getConfig()->get("diamond-block-id");
+        $emeraldBID = LegacyStringToItemParser::getInstance()->parse($emeraldBIDL);
+        $emeraldBIDL = $this->getConfig()->get("emerald-block-id");
 
 # =========================================================================
 
