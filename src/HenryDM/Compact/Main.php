@@ -101,7 +101,7 @@ class Main extends PluginBase implements Listener {
                 if($inv === $coalcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem($coalOID->setCount($mcompact));
+                            $sender->getInventory()->getItemInHand()->removeItem($coalOID->setCount($mcompact));
                             $sender->getInventory()->addItem($coalBID->setCount($bgc));
                             if($sucessca === true) {
                                 if($mtype === "message") {
@@ -135,7 +135,7 @@ class Main extends PluginBase implements Listener {
                 if($inv === $ironcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem($ironOID->setCount($mcompact));
+                            $sender->getInventory()->getItemInHand()->removeItem($ironOID->setCount($mcompact));
                             $sender->getInventory()->addItem($ironBID->setCount($bgc));
                             if($sucessca === true) {
                                 if($mtype === "message") {
@@ -169,7 +169,7 @@ class Main extends PluginBase implements Listener {
                 if($inv === $goldcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem($goldOID->setCount($mcompact));
+                            $sender->getInventory()->getItemInHand()->removeItem($goldOID->setCount($mcompact));
                             $sender->getInventory()->addItem($goldBID->setCount($bgc));
                             if($sucessca === true) {
                                 if($mtype === "message") {
@@ -203,7 +203,7 @@ class Main extends PluginBase implements Listener {
                 if($inv === $diamondcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem($diamondOID->setCount($mcompact));
+                            $sender->getInventory()->getItemInHand()->removeItem($diamondOID->setCount($mcompact));
                             $sender->getInventory()->addItem($diamondBID->setCount($bgc));
                             if($sucessca === true) {
                                 if($mtype === "message") {
@@ -237,7 +237,7 @@ class Main extends PluginBase implements Listener {
                 if($inv === $emeraldcID) {
                     if($count >= $mcompact) {
                         if(in_array($worldName, $this->getConfig()->get("compact-worlds", []))) {
-                            $sender->getInventory()->removeItem($emeraldOID->setCount($mcompact));
+                            $sender->getInventory()->getItemInHand()->removeItem($emeraldOID->setCount($mcompact));
                             $sender->getInventory()->addItem($emeraldBID->setCount($bgc));
                             if($sucessca === true) {
                                 if($mtype === "message") {
