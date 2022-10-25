@@ -10,11 +10,9 @@ commands:
 
   autocompact: 
     description: "compress items directly by breaking blocks!"
-    permission: autocompact.use    
+    permission: compact.use    
 
 permissions: 
-  compact.use:
+  compact.command:
+    description: "Permission to compact blocks"
     default: true
-
-  autocompact.use:
-    default: op    
